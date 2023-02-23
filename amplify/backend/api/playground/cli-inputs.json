@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "playground",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/wirej/amplify/apps/datastore/playground/amplify/backend/api/playground/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authplayground878f6dbd"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "API_KEY",
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2022-05-31T16:24:49.057Z",
+        "keyDescription": ""
+      }
+    ]
+  }
+}

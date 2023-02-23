@@ -1,0 +1,135 @@
+type BrokenModel
+ @model
+ @auth(rules: [{ allow: owner }])
+{
+  id: ID!
+  value: String!
+  otherValue: String
+}
+
+type JustWhatever
+ @model
+ @auth(rules: [{ allow: owner }])
+{
+  id: ID!
+  value: String
+}
+
+type ParentModel
+  @model
+  @auth(rules: [{ allow: owner }])
+{
+  id: ID!
+  value: String!
+  children: [ChildModel] @hasMany
+}
+
+type ChildModel
+  @model
+  @auth(rules: [{ allow: owner }])
+{
+  id: ID!
+  value: String!
+  parent: ParentModel @belongsTo
+}
+
+type ModelWithoutAuth @model
+{
+  id: ID!
+  value: String
+}
+
+type ModelWithDefaults
+  @model
+  @auth(rules: [{ allow: owner }])
+{
+  id: ID!
+  valueWithDefault: String @default(value: "default value")
+  requiredValueWithDefault: String @default(value: "required default value")
+}
+
+# type TestModelRenameQuery
+#   @auth(rules: [{ allow: owner }])
+#   @model(queries: { get: "queryFor" })
+# {
+#   id: ID!
+#   value: String
+# }
+
+type Post
+  @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: public, operations: [read] }
+    ]
+  )
+  {
+  id: ID!
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  content: String
+  username: String
+    @index(name: "postsByUsername", queryField: "postsByUsername")
+  type: String
+    @index(
+      name: "postsByDate"
+      queryField: "postsByDate"
+      sortKeyFields: ["createdAt"]
+    )
+}
+
+type CompositeDog @model @auth(rules: [
+  { allow: owner }
+]) {
+  name: ID! @primaryKey(sortKeyFields: ["description"])
+  description: String!
+  compositeOwner: CompositeOwner @belongsTo
+}
+
+type CompositeOwner @model @auth(rules: [
+  { allow: owner }
+]) {
+  lastName: ID! @primaryKey(sortKeyFields: ["firstName"])
+  firstName: String!
+  compositeDog: CompositeDog @hasOne
+}
+ 
+type BoringDog @model @auth(rules: [
+  { allow: owner }
+]) {
+  id: ID!
+  name: String
+  boringOwner: BoringOwner @belongsTo
+}
+
+type BoringOwner @model @auth(rules: [
+  { allow: owner }
+]) {
+  id: ID!
+  name: String
+  boringDog: BoringDog @hasOne
+}
+
+type BasicModelRequiredTS
+  @model(
+    timestamps: {
+      updatedAt: "updatedOn"
+    }
+  )
+  @auth(rules: [ { allow: owner }])
+{
+  id: ID!
+  body: String!
+  createdAt: AWSDateTime!
+  updatedOn: AWSDateTime
+}
+
+type BenchmarkedModel
+  @model
+  @auth(rules: [ { allow: owner }])
+{
+  id: ID!
+  indexedField: String! @index(name: "byIndexedField")
+  normalField: String!
+}
