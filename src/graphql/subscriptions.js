@@ -955,6 +955,8 @@ export const onCreateBenchmarkedModel = /* GraphQL */ `
       id
       indexedField
       normalField
+      indexedAggField
+      normalAggField
       createdAt
       updatedAt
       _version
@@ -973,6 +975,8 @@ export const onUpdateBenchmarkedModel = /* GraphQL */ `
       id
       indexedField
       normalField
+      indexedAggField
+      normalAggField
       createdAt
       updatedAt
       _version
@@ -991,7 +995,519 @@ export const onDeleteBenchmarkedModel = /* GraphQL */ `
       id
       indexedField
       normalField
+      indexedAggField
+      normalAggField
       createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onCreateLocation = /* GraphQL */ `
+  subscription OnCreateLocation(
+    $filter: ModelSubscriptionLocationFilterInput
+    $owner: String
+  ) {
+    onCreateLocation(filter: $filter, owner: $owner) {
+      id
+      organisationId
+      locationId
+      X
+      Y
+      Z
+      zMax
+      type
+      name
+      userId
+      parentLocationIdRef
+      parents {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      childIdRef
+      children {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      mapTop
+      mapLeft
+      mapWidth
+      mapHeight
+      itemIdRefs
+      amount
+      capacity
+      split
+      splitType
+      splitNumber
+      hasCustomSpots
+      rowNamingScheme
+      code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onUpdateLocation = /* GraphQL */ `
+  subscription OnUpdateLocation(
+    $filter: ModelSubscriptionLocationFilterInput
+    $owner: String
+  ) {
+    onUpdateLocation(filter: $filter, owner: $owner) {
+      id
+      organisationId
+      locationId
+      X
+      Y
+      Z
+      zMax
+      type
+      name
+      userId
+      parentLocationIdRef
+      parents {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      childIdRef
+      children {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      mapTop
+      mapLeft
+      mapWidth
+      mapHeight
+      itemIdRefs
+      amount
+      capacity
+      split
+      splitType
+      splitNumber
+      hasCustomSpots
+      rowNamingScheme
+      code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onDeleteLocation = /* GraphQL */ `
+  subscription OnDeleteLocation(
+    $filter: ModelSubscriptionLocationFilterInput
+    $owner: String
+  ) {
+    onDeleteLocation(filter: $filter, owner: $owner) {
+      id
+      organisationId
+      locationId
+      X
+      Y
+      Z
+      zMax
+      type
+      name
+      userId
+      parentLocationIdRef
+      parents {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      childIdRef
+      children {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      mapTop
+      mapLeft
+      mapWidth
+      mapHeight
+      itemIdRefs
+      amount
+      capacity
+      split
+      splitType
+      splitNumber
+      hasCustomSpots
+      rowNamingScheme
+      code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onCreateUserProfiles = /* GraphQL */ `
+  subscription OnCreateUserProfiles(
+    $filter: ModelSubscriptionUserProfilesFilterInput
+    $owner: String
+  ) {
+    onCreateUserProfiles(filter: $filter, owner: $owner) {
+      id
+      userId
+      name
+      email
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateUserProfiles = /* GraphQL */ `
+  subscription OnUpdateUserProfiles(
+    $filter: ModelSubscriptionUserProfilesFilterInput
+    $owner: String
+  ) {
+    onUpdateUserProfiles(filter: $filter, owner: $owner) {
+      id
+      userId
+      name
+      email
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteUserProfiles = /* GraphQL */ `
+  subscription OnDeleteUserProfiles(
+    $filter: ModelSubscriptionUserProfilesFilterInput
+    $owner: String
+  ) {
+    onDeleteUserProfiles(filter: $filter, owner: $owner) {
+      id
+      userId
+      name
+      email
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateLevelInfo = /* GraphQL */ `
+  subscription OnCreateLevelInfo(
+    $filter: ModelSubscriptionLevelInfoFilterInput
+    $owner: String
+  ) {
+    onCreateLevelInfo(filter: $filter, owner: $owner) {
+      id
+      tenant
+      name
+      order
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onUpdateLevelInfo = /* GraphQL */ `
+  subscription OnUpdateLevelInfo(
+    $filter: ModelSubscriptionLevelInfoFilterInput
+    $owner: String
+  ) {
+    onUpdateLevelInfo(filter: $filter, owner: $owner) {
+      id
+      tenant
+      name
+      order
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onDeleteLevelInfo = /* GraphQL */ `
+  subscription OnDeleteLevelInfo(
+    $filter: ModelSubscriptionLevelInfoFilterInput
+    $owner: String
+  ) {
+    onDeleteLevelInfo(filter: $filter, owner: $owner) {
+      id
+      tenant
+      name
+      order
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onCreateNote = /* GraphQL */ `
+  subscription OnCreateNote(
+    $filter: ModelSubscriptionNoteFilterInput
+    $owner: String
+  ) {
+    onCreateNote(filter: $filter, owner: $owner) {
+      noteId
+      noteType
+      createdAt
+      content
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onUpdateNote = /* GraphQL */ `
+  subscription OnUpdateNote(
+    $filter: ModelSubscriptionNoteFilterInput
+    $owner: String
+  ) {
+    onUpdateNote(filter: $filter, owner: $owner) {
+      noteId
+      noteType
+      createdAt
+      content
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const onDeleteNote = /* GraphQL */ `
+  subscription OnDeleteNote(
+    $filter: ModelSubscriptionNoteFilterInput
+    $owner: String
+  ) {
+    onDeleteNote(filter: $filter, owner: $owner) {
+      noteId
+      noteType
+      createdAt
+      content
       updatedAt
       _version
       _deleted

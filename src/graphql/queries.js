@@ -1008,6 +1008,8 @@ export const getBenchmarkedModel = /* GraphQL */ `
       id
       indexedField
       normalField
+      indexedAggField
+      normalAggField
       createdAt
       updatedAt
       _version
@@ -1032,6 +1034,8 @@ export const listBenchmarkedModels = /* GraphQL */ `
         id
         indexedField
         normalField
+        indexedAggField
+        normalAggField
         createdAt
         updatedAt
         _version
@@ -1061,6 +1065,598 @@ export const syncBenchmarkedModels = /* GraphQL */ `
         id
         indexedField
         normalField
+        indexedAggField
+        normalAggField
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getLocation = /* GraphQL */ `
+  query GetLocation(
+    $organisationId: String!
+    $locationId: String!
+    $X: Int!
+    $Y: Int!
+    $Z: Int!
+  ) {
+    getLocation(
+      organisationId: $organisationId
+      locationId: $locationId
+      X: $X
+      Y: $Y
+      Z: $Z
+    ) {
+      id
+      organisationId
+      locationId
+      X
+      Y
+      Z
+      zMax
+      type
+      name
+      userId
+      parentLocationIdRef
+      parents {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      childIdRef
+      children {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      mapTop
+      mapLeft
+      mapWidth
+      mapHeight
+      itemIdRefs
+      amount
+      capacity
+      split
+      splitType
+      splitNumber
+      hasCustomSpots
+      rowNamingScheme
+      code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const listLocations = /* GraphQL */ `
+  query ListLocations(
+    $organisationId: String
+    $locationIdXYZ: ModelLocationPrimaryCompositeKeyConditionInput
+    $filter: ModelLocationFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listLocations(
+      organisationId: $organisationId
+      locationIdXYZ: $locationIdXYZ
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        organisationId
+        locationId
+        X
+        Y
+        Z
+        zMax
+        type
+        name
+        userId
+        parentLocationIdRef
+        parents {
+          nextToken
+          startedAt
+        }
+        childIdRef
+        children {
+          nextToken
+          startedAt
+        }
+        mapTop
+        mapLeft
+        mapWidth
+        mapHeight
+        itemIdRefs
+        amount
+        capacity
+        split
+        splitType
+        splitNumber
+        hasCustomSpots
+        rowNamingScheme
+        code
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncLocations = /* GraphQL */ `
+  query SyncLocations(
+    $filter: ModelLocationFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncLocations(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        organisationId
+        locationId
+        X
+        Y
+        Z
+        zMax
+        type
+        name
+        userId
+        parentLocationIdRef
+        parents {
+          nextToken
+          startedAt
+        }
+        childIdRef
+        children {
+          nextToken
+          startedAt
+        }
+        mapTop
+        mapLeft
+        mapWidth
+        mapHeight
+        itemIdRefs
+        amount
+        capacity
+        split
+        splitType
+        splitNumber
+        hasCustomSpots
+        rowNamingScheme
+        code
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getUserProfiles = /* GraphQL */ `
+  query GetUserProfiles($id: ID!) {
+    getUserProfiles(id: $id) {
+      id
+      userId
+      name
+      email
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listUserProfiles = /* GraphQL */ `
+  query ListUserProfiles(
+    $id: ID
+    $filter: ModelUserProfilesFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listUserProfiles(
+      id: $id
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        userId
+        name
+        email
+        owner
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncUserProfiles = /* GraphQL */ `
+  query SyncUserProfiles(
+    $filter: ModelUserProfilesFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUserProfiles(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        userId
+        name
+        email
+        owner
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getLevelInfo = /* GraphQL */ `
+  query GetLevelInfo($id: ID!) {
+    getLevelInfo(id: $id) {
+      id
+      tenant
+      name
+      order
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const listLevelInfos = /* GraphQL */ `
+  query ListLevelInfos(
+    $filter: ModelLevelInfoFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listLevelInfos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        tenant
+        name
+        order
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncLevelInfos = /* GraphQL */ `
+  query SyncLevelInfos(
+    $filter: ModelLevelInfoFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncLevelInfos(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        tenant
+        name
+        order
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getNote = /* GraphQL */ `
+  query GetNote($noteId: String!) {
+    getNote(noteId: $noteId) {
+      noteId
+      noteType
+      createdAt
+      content
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const listNotes = /* GraphQL */ `
+  query ListNotes(
+    $noteId: String
+    $filter: ModelNoteFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listNotes(
+      noteId: $noteId
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        noteId
+        noteType
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncNotes = /* GraphQL */ `
+  query SyncNotes(
+    $filter: ModelNoteFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncNotes(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        noteId
+        noteType
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const locationByParentIdRef = /* GraphQL */ `
+  query LocationByParentIdRef(
+    $parentLocationIdRef: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelLocationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    LocationByParentIdRef(
+      parentLocationIdRef: $parentLocationIdRef
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        organisationId
+        locationId
+        X
+        Y
+        Z
+        zMax
+        type
+        name
+        userId
+        parentLocationIdRef
+        parents {
+          nextToken
+          startedAt
+        }
+        childIdRef
+        children {
+          nextToken
+          startedAt
+        }
+        mapTop
+        mapLeft
+        mapWidth
+        mapHeight
+        itemIdRefs
+        amount
+        capacity
+        split
+        splitType
+        splitNumber
+        hasCustomSpots
+        rowNamingScheme
+        code
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const locationByChildIdRef = /* GraphQL */ `
+  query LocationByChildIdRef(
+    $childIdRef: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelLocationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    LocationByChildIdRef(
+      childIdRef: $childIdRef
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        organisationId
+        locationId
+        X
+        Y
+        Z
+        zMax
+        type
+        name
+        userId
+        parentLocationIdRef
+        parents {
+          nextToken
+          startedAt
+        }
+        childIdRef
+        children {
+          nextToken
+          startedAt
+        }
+        mapTop
+        mapLeft
+        mapWidth
+        mapHeight
+        itemIdRefs
+        amount
+        capacity
+        split
+        splitType
+        splitNumber
+        hasCustomSpots
+        rowNamingScheme
+        code
         createdAt
         updatedAt
         _version

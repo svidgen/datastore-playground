@@ -4,7 +4,7 @@ import { schema } from './schema';
 
 
 
-const { BrokenModel, JustWhatever, ParentModel, ChildModel, ModelWithoutAuth, ModelWithDefaults, Post, CompositeDog, CompositeOwner, BoringDog, BoringOwner, BasicModelRequiredTS, benchmarkedModel } = initSchema(schema);
+const { BrokenModel, JustWhatever, ParentModel, ChildModel, ModelWithoutAuth, ModelWithDefaults, Post, CompositeDog, CompositeOwner, BoringDog, BoringOwner, BasicModelRequiredTS, BenchmarkedModel, Location, UserProfiles, LevelInfo, Note } = initSchema(schema);
 
 export {
   BrokenModel,
@@ -19,5 +19,9 @@ export {
   BoringDog,
   BoringOwner,
   BasicModelRequiredTS,
-  benchmarkedModel
+  BenchmarkedModel,
+  Location,
+  UserProfiles,
+  LevelInfo,
+  Note
 };

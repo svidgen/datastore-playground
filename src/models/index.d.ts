@@ -1,4 +1,4 @@
-import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier, CompositeIdentifier } from "@aws-amplify/datastore";
+import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier, CompositeIdentifier, OptionallyManagedIdentifier, CustomIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
 import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
 
@@ -372,32 +372,210 @@ export declare const BasicModelRequiredTS: (new (init: ModelInit<BasicModelRequi
   copyOf(source: BasicModelRequiredTS, mutator: (draft: MutableModel<BasicModelRequiredTS>) => MutableModel<BasicModelRequiredTS> | void): BasicModelRequiredTS;
 }
 
-type EagerbenchmarkedModel = {
+type EagerBenchmarkedModel = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<benchmarkedModel, 'id'>;
+    identifier: ManagedIdentifier<BenchmarkedModel, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly indexedField: string;
   readonly normalField: string;
+  readonly indexedAggField: string;
+  readonly normalAggField: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazybenchmarkedModel = {
+type LazyBenchmarkedModel = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<benchmarkedModel, 'id'>;
+    identifier: ManagedIdentifier<BenchmarkedModel, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly indexedField: string;
   readonly normalField: string;
+  readonly indexedAggField: string;
+  readonly normalAggField: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type benchmarkedModel = LazyLoading extends LazyLoadingDisabled ? EagerbenchmarkedModel : LazybenchmarkedModel
+export declare type BenchmarkedModel = LazyLoading extends LazyLoadingDisabled ? EagerBenchmarkedModel : LazyBenchmarkedModel
 
-export declare const benchmarkedModel: (new (init: ModelInit<benchmarkedModel>) => benchmarkedModel) & {
-  copyOf(source: benchmarkedModel, mutator: (draft: MutableModel<benchmarkedModel>) => MutableModel<benchmarkedModel> | void): benchmarkedModel;
+export declare const BenchmarkedModel: (new (init: ModelInit<BenchmarkedModel>) => BenchmarkedModel) & {
+  copyOf(source: BenchmarkedModel, mutator: (draft: MutableModel<BenchmarkedModel>) => MutableModel<BenchmarkedModel> | void): BenchmarkedModel;
+}
+
+type EagerLocation = {
+  readonly [__modelMeta__]: {
+    identifier: CompositeIdentifier<Location, ['organisationId', 'locationId', 'X', 'Y', 'Z']>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id?: string | null;
+  readonly organisationId: string;
+  readonly locationId: string;
+  readonly X: number;
+  readonly Y: number;
+  readonly Z: number;
+  readonly zMax?: number | null;
+  readonly type: string;
+  readonly name: string;
+  readonly userId: string;
+  readonly parentLocationIdRef: string;
+  readonly parents?: Location[] | null;
+  readonly childIdRef?: string | null;
+  readonly children?: Location[] | null;
+  readonly mapTop?: string | null;
+  readonly mapLeft?: string | null;
+  readonly mapWidth?: string | null;
+  readonly mapHeight?: string | null;
+  readonly itemIdRefs?: (string | null)[] | null;
+  readonly amount?: number | null;
+  readonly capacity?: number | null;
+  readonly split?: boolean | null;
+  readonly splitType?: string | null;
+  readonly splitNumber?: number | null;
+  readonly hasCustomSpots?: boolean | null;
+  readonly rowNamingScheme?: string | null;
+  readonly code?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyLocation = {
+  readonly [__modelMeta__]: {
+    identifier: CompositeIdentifier<Location, ['organisationId', 'locationId', 'X', 'Y', 'Z']>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id?: string | null;
+  readonly organisationId: string;
+  readonly locationId: string;
+  readonly X: number;
+  readonly Y: number;
+  readonly Z: number;
+  readonly zMax?: number | null;
+  readonly type: string;
+  readonly name: string;
+  readonly userId: string;
+  readonly parentLocationIdRef: string;
+  readonly parents: AsyncCollection<Location>;
+  readonly childIdRef?: string | null;
+  readonly children: AsyncCollection<Location>;
+  readonly mapTop?: string | null;
+  readonly mapLeft?: string | null;
+  readonly mapWidth?: string | null;
+  readonly mapHeight?: string | null;
+  readonly itemIdRefs?: (string | null)[] | null;
+  readonly amount?: number | null;
+  readonly capacity?: number | null;
+  readonly split?: boolean | null;
+  readonly splitType?: string | null;
+  readonly splitNumber?: number | null;
+  readonly hasCustomSpots?: boolean | null;
+  readonly rowNamingScheme?: string | null;
+  readonly code?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Location = LazyLoading extends LazyLoadingDisabled ? EagerLocation : LazyLocation
+
+export declare const Location: (new (init: ModelInit<Location>) => Location) & {
+  copyOf(source: Location, mutator: (draft: MutableModel<Location>) => MutableModel<Location> | void): Location;
+}
+
+type EagerUserProfiles = {
+  readonly [__modelMeta__]: {
+    identifier: OptionallyManagedIdentifier<UserProfiles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly userId?: string | null;
+  readonly name?: string | null;
+  readonly email?: string | null;
+  readonly owner?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyUserProfiles = {
+  readonly [__modelMeta__]: {
+    identifier: OptionallyManagedIdentifier<UserProfiles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly userId?: string | null;
+  readonly name?: string | null;
+  readonly email?: string | null;
+  readonly owner?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type UserProfiles = LazyLoading extends LazyLoadingDisabled ? EagerUserProfiles : LazyUserProfiles
+
+export declare const UserProfiles: (new (init: ModelInit<UserProfiles>) => UserProfiles) & {
+  copyOf(source: UserProfiles, mutator: (draft: MutableModel<UserProfiles>) => MutableModel<UserProfiles> | void): UserProfiles;
+}
+
+type EagerLevelInfo = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<LevelInfo, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly tenant?: string | null;
+  readonly name: string;
+  readonly order: number;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyLevelInfo = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<LevelInfo, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly tenant?: string | null;
+  readonly name: string;
+  readonly order: number;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type LevelInfo = LazyLoading extends LazyLoadingDisabled ? EagerLevelInfo : LazyLevelInfo
+
+export declare const LevelInfo: (new (init: ModelInit<LevelInfo>) => LevelInfo) & {
+  copyOf(source: LevelInfo, mutator: (draft: MutableModel<LevelInfo>) => MutableModel<LevelInfo> | void): LevelInfo;
+}
+
+type EagerNote = {
+  readonly [__modelMeta__]: {
+    identifier: CustomIdentifier<Note, 'noteId'>;
+    readOnlyFields: 'updatedAt';
+  };
+  readonly noteId: string;
+  readonly noteType: string;
+  readonly createdAt: string;
+  readonly content?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyNote = {
+  readonly [__modelMeta__]: {
+    identifier: CustomIdentifier<Note, 'noteId'>;
+    readOnlyFields: 'updatedAt';
+  };
+  readonly noteId: string;
+  readonly noteType: string;
+  readonly createdAt: string;
+  readonly content?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Note = LazyLoading extends LazyLoadingDisabled ? EagerNote : LazyNote
+
+export declare const Note: (new (init: ModelInit<Note>) => Note) & {
+  copyOf(source: Note, mutator: (draft: MutableModel<Note>) => MutableModel<Note> | void): Note;
 }

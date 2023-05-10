@@ -1015,6 +1015,8 @@ export const createBenchmarkedModel = /* GraphQL */ `
       id
       indexedField
       normalField
+      indexedAggField
+      normalAggField
       createdAt
       updatedAt
       _version
@@ -1033,6 +1035,8 @@ export const updateBenchmarkedModel = /* GraphQL */ `
       id
       indexedField
       normalField
+      indexedAggField
+      normalAggField
       createdAt
       updatedAt
       _version
@@ -1051,7 +1055,519 @@ export const deleteBenchmarkedModel = /* GraphQL */ `
       id
       indexedField
       normalField
+      indexedAggField
+      normalAggField
       createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const createLocation = /* GraphQL */ `
+  mutation CreateLocation(
+    $input: CreateLocationInput!
+    $condition: ModelLocationConditionInput
+  ) {
+    createLocation(input: $input, condition: $condition) {
+      id
+      organisationId
+      locationId
+      X
+      Y
+      Z
+      zMax
+      type
+      name
+      userId
+      parentLocationIdRef
+      parents {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      childIdRef
+      children {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      mapTop
+      mapLeft
+      mapWidth
+      mapHeight
+      itemIdRefs
+      amount
+      capacity
+      split
+      splitType
+      splitNumber
+      hasCustomSpots
+      rowNamingScheme
+      code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const updateLocation = /* GraphQL */ `
+  mutation UpdateLocation(
+    $input: UpdateLocationInput!
+    $condition: ModelLocationConditionInput
+  ) {
+    updateLocation(input: $input, condition: $condition) {
+      id
+      organisationId
+      locationId
+      X
+      Y
+      Z
+      zMax
+      type
+      name
+      userId
+      parentLocationIdRef
+      parents {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      childIdRef
+      children {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      mapTop
+      mapLeft
+      mapWidth
+      mapHeight
+      itemIdRefs
+      amount
+      capacity
+      split
+      splitType
+      splitNumber
+      hasCustomSpots
+      rowNamingScheme
+      code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const deleteLocation = /* GraphQL */ `
+  mutation DeleteLocation(
+    $input: DeleteLocationInput!
+    $condition: ModelLocationConditionInput
+  ) {
+    deleteLocation(input: $input, condition: $condition) {
+      id
+      organisationId
+      locationId
+      X
+      Y
+      Z
+      zMax
+      type
+      name
+      userId
+      parentLocationIdRef
+      parents {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      childIdRef
+      children {
+        items {
+          id
+          organisationId
+          locationId
+          X
+          Y
+          Z
+          zMax
+          type
+          name
+          userId
+          parentLocationIdRef
+          childIdRef
+          mapTop
+          mapLeft
+          mapWidth
+          mapHeight
+          itemIdRefs
+          amount
+          capacity
+          split
+          splitType
+          splitNumber
+          hasCustomSpots
+          rowNamingScheme
+          code
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+        }
+        nextToken
+        startedAt
+      }
+      mapTop
+      mapLeft
+      mapWidth
+      mapHeight
+      itemIdRefs
+      amount
+      capacity
+      split
+      splitType
+      splitNumber
+      hasCustomSpots
+      rowNamingScheme
+      code
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const createUserProfiles = /* GraphQL */ `
+  mutation CreateUserProfiles(
+    $input: CreateUserProfilesInput!
+    $condition: ModelUserProfilesConditionInput
+  ) {
+    createUserProfiles(input: $input, condition: $condition) {
+      id
+      userId
+      name
+      email
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateUserProfiles = /* GraphQL */ `
+  mutation UpdateUserProfiles(
+    $input: UpdateUserProfilesInput!
+    $condition: ModelUserProfilesConditionInput
+  ) {
+    updateUserProfiles(input: $input, condition: $condition) {
+      id
+      userId
+      name
+      email
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteUserProfiles = /* GraphQL */ `
+  mutation DeleteUserProfiles(
+    $input: DeleteUserProfilesInput!
+    $condition: ModelUserProfilesConditionInput
+  ) {
+    deleteUserProfiles(input: $input, condition: $condition) {
+      id
+      userId
+      name
+      email
+      owner
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createLevelInfo = /* GraphQL */ `
+  mutation CreateLevelInfo(
+    $input: CreateLevelInfoInput!
+    $condition: ModelLevelInfoConditionInput
+  ) {
+    createLevelInfo(input: $input, condition: $condition) {
+      id
+      tenant
+      name
+      order
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const updateLevelInfo = /* GraphQL */ `
+  mutation UpdateLevelInfo(
+    $input: UpdateLevelInfoInput!
+    $condition: ModelLevelInfoConditionInput
+  ) {
+    updateLevelInfo(input: $input, condition: $condition) {
+      id
+      tenant
+      name
+      order
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const deleteLevelInfo = /* GraphQL */ `
+  mutation DeleteLevelInfo(
+    $input: DeleteLevelInfoInput!
+    $condition: ModelLevelInfoConditionInput
+  ) {
+    deleteLevelInfo(input: $input, condition: $condition) {
+      id
+      tenant
+      name
+      order
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const createNote = /* GraphQL */ `
+  mutation CreateNote(
+    $input: CreateNoteInput!
+    $condition: ModelNoteConditionInput
+  ) {
+    createNote(input: $input, condition: $condition) {
+      noteId
+      noteType
+      createdAt
+      content
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const updateNote = /* GraphQL */ `
+  mutation UpdateNote(
+    $input: UpdateNoteInput!
+    $condition: ModelNoteConditionInput
+  ) {
+    updateNote(input: $input, condition: $condition) {
+      noteId
+      noteType
+      createdAt
+      content
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+  }
+`;
+export const deleteNote = /* GraphQL */ `
+  mutation DeleteNote(
+    $input: DeleteNoteInput!
+    $condition: ModelNoteConditionInput
+  ) {
+    deleteNote(input: $input, condition: $condition) {
+      noteId
+      noteType
+      createdAt
+      content
       updatedAt
       _version
       _deleted

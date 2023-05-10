@@ -132,4 +132,74 @@ type BenchmarkedModel
   id: ID!
   indexedField: String! @index(name: "byIndexedField")
   normalField: String!
+  indexedAggField: String! @index(name: "byIndexedAggField")
+  normalAggField: String!
+}
+
+type Location @model @auth(rules: [{ allow: owner }]) {
+  id: ID
+  organisationId: String! @primaryKey(sortKeyFields: ["locationId", "X", "Y", "Z"])
+  locationId: String!
+  X: Int!
+  Y: Int!
+  Z: Int!
+  zMax: Int
+  type: String!
+  name: String!
+  userId: String!
+  parentLocationIdRef: String! @index(name: "ByParentIdRef", queryField: "LocationByParentIdRef")
+  parents: [Location!] @hasMany(fields: ["parentLocationIdRef"])
+  childIdRef: String @index(name: "ByChildIdRef", queryField: "LocationByChildIdRef")
+  children: [Location!] @hasMany(fields: ["childIdRef"])
+  mapTop: String
+  mapLeft: String
+  mapWidth: String
+  mapHeight: String
+  itemIdRefs: [String]
+  amount: Int
+  capacity: Int
+  split: Boolean
+  splitType: String
+  splitNumber: Int
+  hasCustomSpots: Boolean
+  rowNamingScheme: String
+  code: String
+}
+
+
+# as the customer provided it
+# type UserProfiles @model @auth(rules: [{allow: owner}]) {
+#   id: ID!
+#   userId: String @index(sortKeyFields: ["owner"])
+#   name: String
+#   email: String
+#   owner: String @auth(rules: [{allow: owner, operations: [read, delete]}])
+# }
+
+# fixed. but, not what the customer is doing:
+type UserProfiles @model @auth(rules: [{allow: owner}]) {
+  id: ID! @primaryKey
+  userId: String @index(name: "byUserIdAndOwner", sortKeyFields: ["owner"])
+  name: String
+  email: String
+  owner: String @auth(rules: [{allow: owner, operations: [read, delete]}])
+}
+
+type LevelInfo @model @auth(rules: [
+    { allow: groups, groupsField: "tenant", operations: [read, update] },
+    { allow: owner }
+]) {
+  id: ID!
+  tenant: String @default(value: "admin")
+  name: String!
+  order: Int!
+  # people: [Person] @hasMany
+}
+
+type Note @model @auth(rules: [{ allow: owner }]) {
+  noteId: String! @primaryKey
+  noteType: String!
+     @index(name: "notesByNoteType", sortKeyFields: ["createdAt"])
+  createdAt: AWSDateTime!
+  content: String
 }

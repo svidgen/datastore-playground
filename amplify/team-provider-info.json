@@ -1,14 +1,14 @@
 {
-  "dev": {
+  "play": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-playground-dev-152949-authRole",
-      "UnauthRoleArn": "arn:aws:iam::654007195465:role/amplify-playground-dev-152949-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::654007195465:role/amplify-playground-dev-152949-authRole",
+      "AuthRoleName": "amplify-playground-play-93212-authRole",
+      "UnauthRoleArn": "arn:aws:iam::654007195465:role/amplify-playground-play-93212-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::654007195465:role/amplify-playground-play-93212-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-playground-dev-152949-deployment",
-      "UnauthRoleName": "amplify-playground-dev-152949-unauthRole",
-      "StackName": "amplify-playground-dev-152949",
-      "StackId": "arn:aws:cloudformation:us-east-2:654007195465:stack/amplify-playground-dev-152949/6b6f7b60-89ef-11ec-a940-028da821e1bc",
+      "DeploymentBucketName": "amplify-playground-play-93212-deployment",
+      "UnauthRoleName": "amplify-playground-play-93212-unauthRole",
+      "StackName": "amplify-playground-play-93212",
+      "StackId": "arn:aws:cloudformation:us-east-2:654007195465:stack/amplify-playground-play-93212/698355d0-b458-11ed-9e2f-02ab99efc7d4",
       "AmplifyAppId": "d11d7f54q5haw2"
     },
     "categories": {
